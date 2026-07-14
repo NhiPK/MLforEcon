@@ -216,3 +216,39 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+#STRCUTURE FOR FIRM DATA
+# Raw and processed data
+data/raw/*
+data/processed/*
+
+# Keep folders visible in GitHub
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Generated outputs
+outputs/figures/*
+outputs/tables/*
+
+!outputs/figures/.gitkeep
+!outputs/tables/.gitkeep
+
+# Python temporary files
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
+
