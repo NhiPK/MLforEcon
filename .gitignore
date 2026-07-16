@@ -2,7 +2,6 @@
 __pycache__/
 *.py[codz]
 *$py.class
-data/
 # C extensions
 *.so
 
@@ -252,3 +251,6 @@ Thumbs.db
 .vscode/
 .idea/
 
+# Explicitly track your model inputs
+!data/model_input/
+!data/model_input/*
