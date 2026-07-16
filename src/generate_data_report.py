@@ -277,6 +277,51 @@ def section_outcome(df: pd.DataFrame, fig_dir: str) -> str:
     return "\n".join(lines)
 
 
+def section_outcome_by_year(df: pd.DataFrame, fig_dir: str) -> str:
+    sub = df[["closdate_year", "ncliGrowthNextYear"]].dropna()
+
+    # Boxplot by year — shows median, IQR, and outliers per year at a glance
+    years = sorted(sub["closdate_year"].unique())
+    data_by_year = [sub.loc[sub["closdate_year"] == y, "ncliGrowthNextYear"].values for y in years]
+
+    fig, ax = plt.subplots(figsize=(10, 4.5))
+    try:
+        ax.boxplot(data_by_year, tick_labels=[str(y) for y in years], showfliers=True,
+                   flierprops=dict(marker="o", markersize=2, alpha=0.3))
+    except TypeError:  # matplotlib < 3.9 doesn't have tick_labels yet
+        ax.boxplot(data_by_year, labels=[str(y) for y in years], showfliers=True,
+                   flierprops=dict(marker="o", markersize=2, alpha=0.3))
+    ax.axhline(0, color="grey", linewidth=0.8, linestyle="--")
+    ax.set_xlabel("Fiscal year")
+    ax.set_ylabel("ncliGrowthNextYear")
+    ax.set_title("Outcome distribution by year")
+    plt.setp(ax.get_xticklabels(), rotation=45, ha="right")
+    fig.tight_layout()
+    fig_path = os.path.join(fig_dir, "outcome_by_year_boxplot.png")
+    fig.savefig(fig_path, dpi=150)
+    plt.close(fig)
+
+    # Summary table: n, mean, median, std per year
+    yearly = sub.groupby("closdate_year")["ncliGrowthNextYear"].agg(
+        n="count", mean="mean", median="median", std="std"
+    ).round(4).reset_index()
+
+    lines = [
+        "## 8. Outcome by year",
+        "",
+        "Same outcome as Section 6, split by fiscal year. Useful for spotting "
+        "regime shifts (e.g. COVID-19) and checking whether the train "
+        "(≤2019) and test (2020–2023) periods in an out-of-time split look "
+        "meaningfully different.",
+        "",
+        "![Outcome by year](figures/outcome_by_year_boxplot.png)",
+        "",
+        yearly.to_markdown(index=False),
+        "",
+    ]
+    return "\n".join(lines)
+
+
 def section_correlations(df: pd.DataFrame, fig_dir: str) -> str:
     key_vars = ["toas", "ncli", "ltdb", "culi", "shfd", "cash", "ncliGrowthNextYear"]
     corr = df[key_vars].corr()
@@ -298,7 +343,7 @@ def section_correlations(df: pd.DataFrame, fig_dir: str) -> str:
     plt.close(fig)
 
     lines = [
-        "## 7. Correlations (selected variables)",
+        "## 9. Correlations (selected variables)",
         "",
         "![Correlation heatmap](figures/correlation_heatmap.png)",
         "",
@@ -334,6 +379,7 @@ def main():
         section_categoricals(df),
         section_numeric_summary(df),
         section_outcome(df, fig_dir),
+        section_outcome_by_year(df, fig_dir),
         section_correlations(df, fig_dir),
     ]
 
@@ -347,4 +393,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
