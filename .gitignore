@@ -216,41 +216,37 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
+# --------------------------------------------------------------------------
+# Raw data — too large for GitHub (A_FirmData.csv alone is >400MB).
+# Keep it locally / in each Codespace instance only.
+# Teammates: download it separately and place it in data/ before running notebooks.
+# --------------------------------------------------------------------------
+data/A_FirmData.csv
+data/B_MacroConfidenceData.csv
+data/C_BundesbankMonthlyReports.zip
+data/*.xlsx
+data/*.xls
 
-#STRCUTURE FOR FIRM DATA
-# Raw and processed data
-data/raw/*
-data/processed/*
+# Keep processed/small files that ARE meant to be tracked, e.g.:
 
-# Keep folders visible in GitHub
-!data/raw/.gitkeep
-!data/processed/.gitkeep
-
-# Generated outputs
-outputs/figures/*
-outputs/tables/*
-
-!outputs/figures/.gitkeep
-!outputs/tables/.gitkeep
-
-# Python temporary files
+# --------------------------------------------------------------------------
+# Python
+# --------------------------------------------------------------------------
 __pycache__/
 *.py[cod]
-.ipynb_checkpoints/
-
-# Virtual environments
+*.egg-info/
 .venv/
 venv/
 env/
 
-# Operating-system files
+# --------------------------------------------------------------------------
+# Jupyter
+# --------------------------------------------------------------------------
+.ipynb_checkpoints/
+
+# --------------------------------------------------------------------------
+# OS / editor junk
+# --------------------------------------------------------------------------
 .DS_Store
 Thumbs.db
-
-# IDE settings
-.vscode/
-.idea/
-
-# Explicitly track your model inputs
-!data/model_input/
-!data/model_input/*
+.vscode/settings.json
