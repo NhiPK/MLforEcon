@@ -227,6 +227,7 @@ data/C_BundesbankMonthlyReports.zip
 data/*.xlsx
 data/*.xls
 data/model_input/df_processed_firms.csv
+data/model_input/df_model_input.csv
 
 # Keep processed/small files that ARE meant to be tracked, e.g.:
 
