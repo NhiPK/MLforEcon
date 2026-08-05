@@ -1,0 +1,63 @@
+{
+  "selected_on": "expanding-window development folds [2015, 2016, 2017, 2018, 2019]",
+  "model": "XGBoost",
+  "feature_set": "firm",
+  "parameters": {
+    "colsample_bytree": 0.3,
+    "learning_rate": 0.01,
+    "max_depth": 4,
+    "min_child_weight": 1,
+    "n_estimators": 3000,
+    "reg_alpha": 1.0,
+    "reg_lambda": 20.0,
+    "subsample": 0.9
+  },
+  "linear_family": "Lasso",
+  "all_block_parameters": {
+    "firm": {
+      "Lasso": {
+        "alpha": 0.01
+      },
+      "XGBoost": {
+        "colsample_bytree": 0.3,
+        "learning_rate": 0.01,
+        "max_depth": 4,
+        "min_child_weight": 1,
+        "n_estimators": 3000,
+        "reg_alpha": 1.0,
+        "reg_lambda": 20.0,
+        "subsample": 0.9
+      }
+    },
+    "firm_survey": {
+      "Lasso": {
+        "alpha": 0.03162277660168379
+      },
+      "XGBoost": {
+        "colsample_bytree": 0.3,
+        "learning_rate": 0.01,
+        "max_depth": 4,
+        "min_child_weight": 1,
+        "n_estimators": 3000,
+        "reg_alpha": 1.0,
+        "reg_lambda": 20.0,
+        "subsample": 0.9
+      }
+    },
+    "firm_survey_text": {
+      "Lasso": {
+        "alpha": 0.03162277660168379
+      },
+      "XGBoost": {
+        "colsample_bytree": 0.3,
+        "learning_rate": 0.01,
+        "max_depth": 4,
+        "min_child_weight": 1,
+        "n_estimators": 3000,
+        "reg_alpha": 1.0,
+        "reg_lambda": 20.0,
+        "subsample": 0.9
+      }
+    }
+  }
+}

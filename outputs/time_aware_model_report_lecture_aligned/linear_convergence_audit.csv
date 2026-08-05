@@ -1,0 +1,4 @@
+feature_set,family,n_iter,max_iter,converged,convergence_warnings,nonzero_coefficients,total_coefficients
+firm,Lasso,19,10000,True,0,7,81
+firm_survey,Lasso,18,10000,True,0,2,111
+firm_survey_text,Lasso,22,10000,True,0,3,117

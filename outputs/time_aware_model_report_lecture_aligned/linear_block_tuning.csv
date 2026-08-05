@@ -1,0 +1,4 @@
+feature_set,family,minimum_CV_RMSE,one_SE_CV_RMSE,parameters
+firm,Lasso,0.3821687575919678,0.38320573643166167,"{""alpha"": 0.01}"
+firm_survey,Lasso,0.3839403729557074,0.3866785607485963,"{""alpha"": 0.03162277660168379}"
+firm_survey_text,Lasso,0.3841086050575586,0.3866613965215703,"{""alpha"": 0.03162277660168379}"
