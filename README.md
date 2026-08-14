@@ -1,6 +1,6 @@
 # MLforEcon
 
-Link of data for model development: https://drive.google.com/file/d/1RWvs2uHDCk_CmdLL2rByLhMTn8TudKRy/view?usp=sharing
+Link of data for model development, after data processing step: https://drive.google.com/file/d/1RWvs2uHDCk_CmdLL2rByLhMTn8TudKRy/view?usp=sharing
 
 
 **Objective**
@@ -15,6 +15,7 @@ The primary goal of this project is to forecast next-period firm-level credit de
 *   **Validation Design:** The out-of-sample testing framework is designed to be highly conservative. Following a rolling-origin cross-validation on pre-2020 development data, everything from 2020 to 2023 was strictly held out. This placed the COVID-19 shock entirely out of sample to stress-test how the models generalize to unprecedented macroeconomic regimes.
 
 ## Directory Guide: Data Processing & Models
+
 
 The project is organized into distinct directories to clearly separate data preparation from model training. Below is a detailed guide:
 
@@ -37,3 +38,29 @@ This folder contains the entire Machine Learning pipeline. The files are organiz
     *   `combined_model.ipynb`: Contains ensemble model analysis.
 *   **`outputs/` Subdirectory:** 
     *   Stores the exported evaluation results.
+
+### 3. Environment Setup
+
+This project uses [`uv`](https://github.com/astral-sh/uv) for dependency and environment management. It ensures that the code is fully reproducible and prevents issues caused by mismatched package versions across different setups.
+
+#### Prerequisites
+
+Install `uv`:
+
+```bash
+# macOS / Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Windows (PowerShell)
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+# or via pip
+pip install uv
+```
+
+#### Setup
+
+2. Create and sync the virtual environment (this installs all dependencies from `pyproject.toml` / `uv.lock`):
+```bash
+   uv sync
+```
